@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-configuration PUBLIC
+    "-//Hibernate/Hibernate Configuration DTD 3.0//EN"
+    "http://hibernate.sourceforge.net/hibernate-configuration-3.0.dtd">
+<hibernate-configuration>
+    <session-factory>
+    
+        <!-- CONFIGURAÇÕES DE CONEXÃO COM O BD  -->
+        
+        <property name="hibernate.connection.driver_class">org.gjt.mm.mysql.Driver</property>
+        <property name="hibernate.connection.username">root</property>
+        <property name="hibernate.connection.password"></property>
+        <property name="hibernate.connection.url">jdbc:mysql://localhost:3306/erudio?createDatabaseIfNotExist=true</property>        
+        <property name="hibernate.dialect">org.hibernate.dialect.MySQL5InnoDBDialect</property>
+
+        <!-- HABILITA A ATUALIZAÇÃO AUTOMÁTICA DA ESTRUTURA DE TABELAS PELO HIBERNATE -->
+        
+        <property name="hibernate.hbm2ddl.auto">update</property>
+        
+        <!-- CONFIGURAÇÕES DO POOL DE CONEXÕES  -->
+        
+        <property name="c3p0.min_size">1</property>
+        <property name="c3p0.max_size">20</property>
+        <property name="c3p0.timeout">300</property>
+        <property name="c3p0.max_statements">80</property>
+        <property name="c3p0.idle_test_period">300</property>
+        
+        <!-- HABILITA A EXIBIÇÃO DO SQL GERADO PELO HIBERNATE E FORMATA-O -->
+        
+        <property name="hibernate.show_sql">true</property>
+        <property name="hibernate.format_sql">true</property>
+        
+        <!-- CONFIGURAÇÕES DE CACHE -->
+        
+        <!--<property name="hibernate.cache.use_query_cache">true</property> HABILITA O CACHE DE 1° NÍVEL -->
+        <!--<property name="hibernate.cache.use_second_level_cache">true</property> HABILITA O CACHE DE 2° NÍVEL -->
+        <!--<property name="hibernate.cache.provider_class">org.hibernate.cache.EhCacheProvider</property> DEFINE QUEM IRÁ PROVER O CACHE -->
+        <!--<property name="hibernate.generate_statistics">true</property> HABILITA O HIBERNATE STATISTICS -->
+
+        <!--<property name="hibernate.current_session_context_class">thread</property> -->
+        
+        <!-- LISTA DE ENTIDADES -->
+        
+        <mapping class="br.com.erudio.database.entities.EntityCidade"/>
+        <mapping class="br.com.erudio.database.entities.EntityEndereco"/>
+        <mapping class="br.com.erudio.database.entities.EntityPessoa"/>                
+        <mapping class="br.com.erudio.database.entities.EntitySexo"/>
+        <mapping class="br.com.erudio.database.entities.EntityTipoEndereco"/>
+        <mapping class="br.com.erudio.database.entities.EntityTipoLogradouro"/>
+    </session-factory>
+</hibernate-configuration>
