@@ -24,28 +24,18 @@ public class EntityCidade extends BaseEntity{
     @GeneratedValue
     @Column(name = "IdCidade", nullable = false)
     private Integer idCidade;
-    @Column(name = "NomeCidade", nullable = false, length = 100)
-    private String nomeCidade;
-    @Column(name = "Sigla", nullable = false, length = 2)
+    @Column(name = "Nome", nullable = false, length = 100)
+    private String nome;
+    @Column(name = "Sigla", length = 2)
     private String sigla;
-    @Column(name = "UF", nullable = false, length = 30)
-    private String uf;
-    @Column(name = "Pais", nullable = false, length = 60)
-    private String pais;
+    @Column(name = "Estado", length = 30)
+    private String estado;
 
     @OneToMany(mappedBy = "cidade", fetch = FetchType.LAZY)
     @ForeignKey(name="Endereco_Cidade")
     private List<EntityEndereco> enderecos;
 
     public EntityCidade() {
-    }
-
-    public List<EntityEndereco> getEnderecos() {
-        return enderecos;
-    }
-
-    public void setEnderecos(List<EntityEndereco> enderecos) {
-        this.enderecos = enderecos;
     }
 
     public Integer getIdCidade() {
@@ -56,20 +46,12 @@ public class EntityCidade extends BaseEntity{
         this.idCidade = idCidade;
     }
 
-    public String getNomeCidade() {
-        return nomeCidade;
+    public String getNome() {
+        return nome;
     }
 
-    public void setNomeCidade(String nomeCidade) {
-        this.nomeCidade = nomeCidade;
-    }
-
-    public String getPais() {
-        return pais;
-    }
-
-    public void setPais(String pais) {
-        this.pais = pais;
+    public void setNome(String nome) {
+        this.nome = nome;
     }
 
     public String getSigla() {
@@ -80,12 +62,20 @@ public class EntityCidade extends BaseEntity{
         this.sigla = sigla;
     }
 
-    public String getUf() {
-        return uf;
+    public String getEstado() {
+        return estado;
     }
 
-    public void setUf(String uf) {
-        this.uf = uf;
+    public void setEstado(String estado) {
+        this.estado = estado;
+    }
+
+    public List<EntityEndereco> getEnderecos() {
+        return enderecos;
+    }
+
+    public void setEnderecos(List<EntityEndereco> enderecos) {
+        this.enderecos = enderecos;
     }
 
 }

@@ -9,62 +9,53 @@ public class BeanCidade extends BaseBean{
     private static final long serialVersionUID = 1L;
 
     private Integer idCidade;
-    private String nomeCidade;
+    private String nome;
     private String sigla;
-    private String uf;
-    private String pais;
+    private String estado;
 
     private List<BeanEndereco> enderecos;
 
     public BeanCidade() {
     }
 
-    public List<BeanEndereco> getEnderecos() {
-        return enderecos;
-    }
+	public Integer getIdCidade() {
+		return idCidade;
+	}
 
-    public void setEnderecos(List<BeanEndereco> enderecos) {
-        this.enderecos = enderecos;
-    }
+	public void setIdCidade(Integer idCidade) {
+		this.idCidade = idCidade;
+	}
 
-    public Integer getIdCidade() {
-        return idCidade;
-    }
+	public String getNome() {
+		return nome;
+	}
 
-    public void setIdCidade(Integer idCidade) {
-        this.idCidade = idCidade;
-    }
+	public void setNome(String nome) {
+		this.nome = nome;
+	}
 
-    public String getNomeCidade() {
-        return nomeCidade;
-    }
+	public String getSigla() {
+		return sigla;
+	}
 
-    public void setNomeCidade(String nomeCidade) {
-        this.nomeCidade = nomeCidade;
-    }
+	public void setSigla(String sigla) {
+		this.sigla = sigla;
+	}
 
-    public String getPais() {
-        return pais;
-    }
+	public String getEstado() {
+		return estado;
+	}
 
-    public void setPais(String pais) {
-        this.pais = pais;
-    }
+	public void setEstado(String estado) {
+		this.estado = estado;
+	}
 
-    public String getSigla() {
-        return sigla;
-    }
+	public List<BeanEndereco> getEnderecos() {
+		return enderecos;
+	}
 
-    public void setSigla(String sigla) {
-        this.sigla = sigla;
-    }
-
-    public String getUf() {
-        return uf;
-    }
-
-    public void setUf(String uf) {
-        this.uf = uf;
-    }
+	public void setEnderecos(List<BeanEndereco> enderecos) {
+		this.enderecos = enderecos;
+	}
 
 }

@@ -20,9 +20,9 @@ public class ParserDatabaseTest {
 
 
 		cidadeBean.setIdCidade(9999);
-		cidadeBean.setNomeCidade("Letópodia");
-		cidadeBean.setSigla("MG");
-		cidadeBean.setUf("MINAS GERAIS");
+		cidadeBean.setNome("CANCÚN");
+		cidadeBean.setSigla("QR");
+		cidadeBean.setEstado("QUINTANA ROO");
 
 		EntityCidade categoryEntity = ParserDatabase.parserBeanToEntity(cidadeBean, EntityCidade.class);
 
@@ -34,16 +34,16 @@ public class ParserDatabaseTest {
 		BeanCidade cidadeBean1 = new BeanCidade();
 
 		cidadeBean1.setIdCidade(10000);
-		cidadeBean1.setNomeCidade("Felisópodia");
-		cidadeBean1.setSigla("MG");
-		cidadeBean1.setUf("MINAS GERAIS");
+		cidadeBean1.setNome("TANGAMANDÁPIO");
+		cidadeBean1.setSigla("MC");
+		cidadeBean1.setEstado("MICHOACÁN");
 
 		BeanCidade cidadeBean2 = new BeanCidade();
 
 		cidadeBean2.setIdCidade(10001);
-		cidadeBean2.setNomeCidade("Sorrisópodia");
-		cidadeBean2.setSigla("MG");
-		cidadeBean2.setUf("MINAS GERAIS");
+		cidadeBean2.setNome("TRUJILLO");
+		cidadeBean2.setSigla("TR");
+		cidadeBean2.setEstado("TRUJILLO");
 
 		List<BeanCidade> categoriesBeans = new ArrayList<BeanCidade>();
 

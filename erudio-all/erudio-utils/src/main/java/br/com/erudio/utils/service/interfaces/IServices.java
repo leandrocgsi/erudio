@@ -6,5 +6,9 @@ import br.com.erudio.utils.database.beans.BeanCidade;
 
 public interface IServices {
 
-	public List<BeanCidade> findAllCidades();
+    Integer saveCidade(BeanCidade cidade);
+    void updateCidade(BeanCidade cidade);
+    void deleteCidade(BeanCidade cidade);
+    List<BeanCidade> findAllCidades();
+    BeanCidade findCidadeById(Integer id);
 }
