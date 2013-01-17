@@ -4,7 +4,7 @@ import java.util.List;
 
 import br.com.erudio.utils.database.beans.BeanCidade;
 
-public interface IServices {
+public interface ICidadeUtilServices {
 
     Integer saveCidade(BeanCidade cidade);
     void updateCidade(BeanCidade cidade);

@@ -9,9 +9,9 @@
 	<context:component-scan base-package="br.com.erudio.service" />
 	<context:component-scan base-package="br.com.erudio.test.service" />
 
-	<bean id="services" class="org.springframework.remoting.rmi.RmiProxyFactoryBean">
-		<property name="serviceUrl" value="rmi://localhost:6681/remote-service" />
-		<property name="serviceInterface" value="br.com.erudio.utils.service.interfaces.IServices" />
+	<bean id="serviceDistributionCidade" class="org.springframework.remoting.rmi.RmiProxyFactoryBean">
+		<property name="serviceUrl" value="rmi://localhost:6681/remote-service-cidade" />
+		<property name="serviceInterface" value="br.com.erudio.utils.service.interfaces.ICidadeUtilServices" />
 		<property name="refreshStubOnConnectFailure" value="true" />
 	</bean>
 	

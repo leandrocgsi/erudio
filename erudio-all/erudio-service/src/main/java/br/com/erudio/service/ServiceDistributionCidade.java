@@ -9,10 +9,10 @@ import org.apache.log4j.Logger;
 
 import br.com.erudio.utils.database.beans.BeanCidade;
 import br.com.erudio.utils.database.interfaces.ICidadeService;
-import br.com.erudio.utils.service.interfaces.IServices;
+import br.com.erudio.utils.service.interfaces.ICidadeUtilServices;
 
 @Named
-public class Services implements IServices {
+public class ServiceDistributionCidade implements ICidadeUtilServices {
 
     private final Logger logger = Logger.getLogger(getClass());
     @Inject

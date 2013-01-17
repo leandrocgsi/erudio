@@ -9,14 +9,14 @@ import org.junit.Test;
 
 import br.com.erudio.test.service.base.AbstractServiceTestBase;
 import br.com.erudio.utils.database.beans.BeanCidade;
-import br.com.erudio.utils.service.interfaces.IServices;
+import br.com.erudio.utils.service.interfaces.ICidadeUtilServices;
 
 public class ClientServiceTest extends AbstractServiceTestBase {
 
 	private static final Logger logger = Logger.getLogger(ClientServiceTest.class);
 
 	@Inject
-	private IServices services;
+	private ICidadeUtilServices services;
 
 	@Test
 	public void clientTest() {

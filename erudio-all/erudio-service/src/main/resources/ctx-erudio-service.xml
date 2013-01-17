@@ -8,18 +8,18 @@
 
 	<!-- Define o pacote inicial que é considerado por este contexto. -->
 	<context:component-scan base-package="br.com.erudio.service"/>
-	
-	<bean id="remoteService" class="br.com.erudio.service.Services" />
-	
+
 	<!-- Define o arquivo que é usado para buscar as informações de configuração. -->
 	<bean class="org.springframework.beans.factory.config.PreferencesPlaceholderConfigurer">
 		<property name="location" value="file:./conf/erudio-conf.properties" />
 	</bean>
-
-	<bean name="remoteServiceBean" class="org.springframework.remoting.rmi.RmiServiceExporter">
-		<property name="serviceName" value="remote-service" />
-		<property name="service" ref="remoteService" />
-		<property name="serviceInterface" value="br.com.erudio.utils.service.interfaces.IServices" />
+	
+	<bean id="remoteServiceCidade" class="br.com.erudio.service.ServiceDistributionCidade" />
+	
+	<bean name="remoteServiceCidadeBean" class="org.springframework.remoting.rmi.RmiServiceExporter">
+		<property name="serviceName" value="remote-service-cidade" />
+		<property name="service" ref="remoteServiceCidade" />
+		<property name="serviceInterface" value="br.com.erudio.utils.service.interfaces.ICidadeUtilServices" />
 		<property name="registryPort" value="${remote.service.rmi.port}" />
 	</bean>
 </beans>
