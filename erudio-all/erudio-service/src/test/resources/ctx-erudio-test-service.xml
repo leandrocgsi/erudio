@@ -14,5 +14,11 @@
 		<property name="serviceInterface" value="br.com.erudio.utils.service.interfaces.ICidadeUtilServices" />
 		<property name="refreshStubOnConnectFailure" value="true" />
 	</bean>
+
+	<bean id="serviceDistributionSexo" class="org.springframework.remoting.rmi.RmiProxyFactoryBean">
+		<property name="serviceUrl" value="rmi://localhost:6681/remote-service-sexo" />
+		<property name="serviceInterface" value="br.com.erudio.utils.service.interfaces.ISexoUtilServices" />
+		<property name="refreshStubOnConnectFailure" value="true" />
+	</bean>
 	
 </beans>

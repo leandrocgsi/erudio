@@ -14,12 +14,19 @@
 		<property name="location" value="file:./conf/erudio-conf.properties" />
 	</bean>
 	
-	<bean id="remoteServiceCidade" class="br.com.erudio.service.ServiceDistributionCidade" />
-	
+	<bean id="remoteServiceCidade" class="br.com.erudio.service.ServiceDistributionCidade" />	
 	<bean name="remoteServiceCidadeBean" class="org.springframework.remoting.rmi.RmiServiceExporter">
 		<property name="serviceName" value="remote-service-cidade" />
 		<property name="service" ref="remoteServiceCidade" />
 		<property name="serviceInterface" value="br.com.erudio.utils.service.interfaces.ICidadeUtilServices" />
+		<property name="registryPort" value="${remote.service.rmi.port}" />
+	</bean>
+	
+	<bean id="remoteServiceSexo" class="br.com.erudio.service.ServiceDistributionSexo" />	
+	<bean name="remoteServiceSexoBean" class="org.springframework.remoting.rmi.RmiServiceExporter">
+		<property name="serviceName" value="remote-service-sexo" />
+		<property name="service" ref="remoteServiceSexo" />
+		<property name="serviceInterface" value="br.com.erudio.utils.service.interfaces.ISexoUtilServices" />
 		<property name="registryPort" value="${remote.service.rmi.port}" />
 	</bean>
 </beans>
