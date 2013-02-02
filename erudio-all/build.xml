@@ -56,7 +56,7 @@
 	</target>
 	
 	<target name="mvn">
-		<exec executable="/usr/share/maven/bin/mvn">
+		<exec executable="${env.MAVEN_HOME}/bin/mvn.bat">
 			<arg value="${mvn.command}" />
 			<arg value="-Dmaven.test.skip=true" />
 		</exec>
