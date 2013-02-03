@@ -13,17 +13,16 @@ import br.com.erudio.utils.service.interfaces.ICidadeUtilServices;
 
 public class ClientServiceTest extends AbstractServiceTestBase {
 
-	private static final Logger logger = Logger.getLogger(ClientServiceTest.class);
+    private static final Logger logger = Logger.getLogger(ClientServiceTest.class);
+    @Inject
+    private ICidadeUtilServices services;
 
-	@Inject
-	private ICidadeUtilServices services;
+    @Test
+    public void clientTest() {
+        List<BeanCidade> cidades = this.services.findAllCidades();
 
-	@Test
-	public void clientTest() {
-		List<BeanCidade> cidades = this.services.findAllCidades();
-
-		if (logger.isDebugEnabled()) {
-			logger.debug(cidades);
-		}
-	}
+        if (logger.isDebugEnabled()) {
+            logger.debug(cidades);
+        }
+    }
 }
