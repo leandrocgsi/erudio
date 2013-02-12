@@ -3,7 +3,9 @@ package br.com.erudio.utils.database.beans;
 import java.util.List;
 
 import br.com.erudio.utils.beans.BaseBean;
+import javax.xml.bind.annotation.XmlRootElement;
 
+@XmlRootElement
 public class BeanTipoEndereco extends BaseBean{
 
     private static final long serialVersionUID = 1L;

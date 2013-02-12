@@ -3,7 +3,9 @@ package br.com.erudio.utils.database.beans;
 import java.util.Date;
 
 import br.com.erudio.utils.beans.BaseBean;
+import javax.xml.bind.annotation.XmlRootElement;
 
+@XmlRootElement
 public class BeanPessoa extends BaseBean {
 
     private static final long serialVersionUID = 1L;
