@@ -12,109 +12,101 @@ import org.hibernate.criterion.Criterion;
 
 import br.com.erudio.database.utils.interfaces.IGenericDAO;
 
-public abstract class GenericDAO<T extends BaseEntity, ID extends Serializable> implements IGenericDAO<T, ID>{
+public abstract class GenericDAO<T extends BaseEntity, ID extends Serializable> implements IGenericDAO<T, ID> {
 
-	private final Logger logger = Logger.getLogger(this.getClass());
-	private final Class<T> persistentClass;
-	private final Session session;
+    private final Logger logger = Logger.getLogger(this.getClass());
+    private final Class<T> persistentClass;
+    private Session session;
 
-	@SuppressWarnings("unchecked")
-	public GenericDAO() {
-		this.persistentClass = (Class<T>) ((ParameterizedType) getClass().getGenericSuperclass()).getActualTypeArguments()[0];
+    @SuppressWarnings("unchecked")
+    public GenericDAO() {
+        this.persistentClass = (Class<T>) ((ParameterizedType) this.getClass().getGenericSuperclass()).getActualTypeArguments()[0];
+        this.session = this.getCurrentSession();
+        if (this.logger.isInfoEnabled()) {
+            this.logger.info(String.format("Creating a dao to the persitence class [%s].", this.getPersistentClass()));
+        }
+    }
 
-		this.session = getCurrentSession();
+    // ///////////////////////////////////////////////////////////////////////////////
+    // PUBLIC METHODS (IGenericDAO<T, ID>)
+    // ///////////////////////////////////////////////////////////////////////////////
+    @Override
+    @SuppressWarnings("unchecked")
+    public T findById(ID id) {
+        return (T) this.getSession().load(this.getPersistentClass(), id);
+    }
 
-		if (this.logger.isInfoEnabled()) {
-			this.logger.info(String.format("Criando um DAO para a classe a ser persistida[%s].", getPersistentClass()));
-		}
-	}
-	// ///////////////////////////////////////////////////////////////////////////////
-	// PUBLIC METHODS (IGenericDao<T, ID>)
-	// ///////////////////////////////////////////////////////////////////////////////
+    @Override
+    public List<T> findAll() {
+        return this.findByCriteria();
+    }
 
-	@Override
-	@SuppressWarnings("unchecked")
-	public T findById(ID id) {
-		return (T) getSession().load(getPersistentClass(), id);
-	}
+    @Override
+    @SuppressWarnings("unchecked")
+    public ID save(T entity) {
+        this.getSession().beginTransaction();
+        Serializable id = this.getSession().save(entity);
+        this.getSession().getTransaction().commit();
+        return (ID) id;
+    }
 
-	@Override
-	public List<T> findAll() {
-		return findByCriteria();
-	}
+    @SuppressWarnings("unchecked")
+    @Override
+    public void update(T entity) {
+        entity = (T) this.getSession().merge(entity);
+        this.getSession().beginTransaction();
+        this.getSession().update(entity);
+        this.getSession().getTransaction().commit();
+    }
 
-	@Override
-	@SuppressWarnings("unchecked")
-	public ID save(T entity) {
-		getSession().beginTransaction();
-		Serializable id = getSession().save(entity);
-		getSession().getTransaction().commit();
+    @SuppressWarnings("unchecked")
+    @Override
+    public void delete(T entity) {
+        entity = (T) this.getSession().merge(entity);
+        this.getSession().beginTransaction();
+        this.getSession().delete(entity);
+        this.getSession().getTransaction().commit();
+    }
 
-		return (ID)id;
-	}
+    @SuppressWarnings("unchecked")
+    protected List<T> executeQuery(String query) {
+        try {
+            Query queryHql = this.getSession().createQuery(query);
+            return queryHql.list();
+        } catch (RuntimeException e) {
+            this.logger.error(e.getMessage(), e);
+            throw e;
+        }
+    }
 
-	@Override
-	public void update(T entity) {
-		getSession().beginTransaction();
-		getSession().update(entity);
-		getSession().getTransaction().commit();
-	}
+    // ///////////////////////////////////////////////////////////////////////////////
+    // GET AND SET METHODS
+    // ///////////////////////////////////////////////////////////////////////////////
+    public Session getSession() {
+        if (this.session == null) {
+            this.logger.error("Sessão não iniciada.");
+            throw new IllegalStateException("A sessão não foi criada antes do uso do DAO");
+        }
+        return this.session;
+    }
 
-	@Override
-	public void delete(T entity) {
-		getSession().beginTransaction();
-		getSession().delete(entity);
-		getSession().getTransaction().commit();
-	}
+    /////////////////////////////////////////////////////////////////////////////////
+    // PRIVATE METHODS
+    /////////////////////////////////////////////////////////////////////////////////
+    private Class<T> getPersistentClass() {
+        return this.persistentClass;
+    }
 
-	@SuppressWarnings("unchecked")
-	protected List<T> executeQuery(String query) {
-		try {
-			Query queryHql = getSession().createQuery(query);
+    @SuppressWarnings({"unchecked", "unused"})
+    private List<T> findByCriteria(Criterion... criterion) {
+        Criteria crit = this.getSession().createCriteria(this.getPersistentClass());
+        for (Criterion c : criterion) {
+            crit.add(c);
+        }
+        return crit.list();
+    }
 
-			return queryHql.list();
-		} catch (RuntimeException e) {
-			this.logger.error(e.getMessage(), e);
-
-			throw e;
-		}
-	}
-
-	// ///////////////////////////////////////////////////////////////////////////////
-	// GET AND SET METHODS
-	// ///////////////////////////////////////////////////////////////////////////////
-
-	public Session getSession() {
-		if (this.session == null) {
-			this.logger.error("Sessão não iniciada.");
-
-			throw new IllegalStateException("A sessão não foi criada antes do uso do DAO");
-		}
-
-		return this.session;
-	}
-
-	/////////////////////////////////////////////////////////////////////////////////
-	// PRIVATE METHODS
-	/////////////////////////////////////////////////////////////////////////////////
-
-	private Class<T> getPersistentClass() {
-		return this.persistentClass;
-	}
-
-	@SuppressWarnings("unchecked")
-	private List<T> findByCriteria(Criterion... criterion) {
-		Criteria crit = getSession().createCriteria(getPersistentClass());
-
-		for (Criterion c : criterion) {
-			crit.add(c);
-		}
-
-		return crit.list();
-	}
-
-	private Session getCurrentSession() {
-		return HibernateUtility.getSession();
-	}
-
+    private Session getCurrentSession() {
+        return HibernateUtility.getSession();
+    }
 }
