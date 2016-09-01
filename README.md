@@ -7,15 +7,15 @@ Aplicação multicamada, com suporte a Mobile, Desktop e Web ainda em desenvolvi
 
 ![Application Architecture](https://github.com/leandrocgsi/erudio/blob/master/img/image1.png?raw=true)
 
-A figura acima representa a especificação da arquitetura base para o desenvolvimento, do sistema Erudio. A aplicacão agora é distribuída, existe uma aplicação servidora responsável por acessar a base de dados, validar regras de negócio e disponibilizar serviços para outras aplicações cliente. Na figura acima o servidor é representado pelo “Erudio Server”. Como clientes temos dois web e um desktop.
+A figura acima representa a especificação da arquitetura base para o desenvolvimento, do sistema Erudio. A aplicacão agora é distribuída, existe uma aplicação servidora responsável por acessar a base de dados, validar regras de negócio e disponibilizar serviços para outras aplicações cliente. Na figura acima o servidor é representado pelo **“Erudio Server”**. Como clientes temos dois web e um desktop.
 O cliente desktop, **“Erudio Desktop Client”** , se comunica com o servidor por RMI como toda a regra de negócio fica concentrada no servidor basicamente só é necessário implementar a camada de visão. 
 O cliente “Erudio Web Client” também se comunica via RMI e a parte de layout é desenvolvida utilizando-se das tecnologias JSF e Primefaces. Questões de segurança nessa aplicação são tratadas pelo Spring Security 3.1., nesse caso as credenciais do usuário são verificadas no server, para esse propósito é necessário sobrescrever a UserDetails. 
-Completando a lista de clientes temos o “Erudio WS-Exporter Client” que se comunica via RMI com o server e disponibiliza web-services REST para clientes mobile ou em linguagens diferentes de Java. Mais uma vez as questões de segurança são providas pelo Spring Security 3.1., onde as credenciais do usuário são verificadas no server, só que agora foi necessário sobrescrever a AuthenticationProvider. Além desses, novos clientes podem ser facilmente adicionados.
+Completando a lista de clientes temos o **“Erudio WS-Exporter Client”** que se comunica via RMI com o server e disponibiliza web-services REST para clientes mobile ou em linguagens diferentes de Java. Mais uma vez as questões de segurança são providas pelo Spring Security 3.1., onde as credenciais do usuário são verificadas no server, só que agora foi necessário sobrescrever a AuthenticationProvider. Além desses, novos clientes podem ser facilmente adicionados.
 Para adicionar novos clientes podemos agir de três diferentes formas:
-- Desenvolver um novo cliente Java utilizando o protocolo RMI;
+- Desenvolver um novo cliente Java utilizando o protocolo **RMI**;
 - Desenvolver um novo cliente Java utilizando um novo protocolo, o que implica em alterações no server;
-- Pode-se ainda desenvolver um cliente que consuma os web-serviçes disponibilizados pelo “Erudio WS-Exporter Client”, esse cliente pode ser em qualquer linguagem ou plataforma. Isto é válido também para clientes mobile, visto que originalmente só foi implementada a solução para Android.
-Essa nova abordagem trás uma série de vantagens dentre elas, maior segurança visto que os clientes conhecem apenas o “contrato” para se comunicar com o servidor ficando alheios à questões de banco de dados, regras de negócio ou implementação. Além disso permite que a equipe de desenvolvimento conheça apenas a parte do software com a qual trabalha, isso facilita o processo de treinamento de um novo membro da equipe bem como evita cópias de código por parte de um desenvolvedor mal intencionado. 
+- Pode-se ainda desenvolver um cliente que consuma os web-serviçes disponibilizados pelo **“Erudio WS-Exporter Client”**, esse cliente pode ser em qualquer linguagem ou plataforma. Isto é válido também para clientes mobile, visto que originalmente só foi implementada a solução para Android.
+Essa nova abordagem trás uma série de vantagens dentre elas, maior segurança visto que os clientes conhecem apenas o **“contrato”** para se comunicar com o servidor ficando alheios à questões de banco de dados, regras de negócio ou implementação. Além disso permite que a equipe de desenvolvimento conheça apenas a parte do software com a qual trabalha, isso facilita o processo de treinamento de um novo membro da equipe bem como evita cópias de código por parte de um desenvolvedor mal intencionado. 
 
 # O “Erudio Server”
 
@@ -30,7 +30,7 @@ O Service por sua vez contém a implementação das ações disponibilizadas pel
 
 # O “Erudio-Erudio-factory”
 
-O projeto Factory é responsável por ler os arquivos de contexto do Spring. Sua implementação é bem simples e temos apenas o método main que invoca o método startApplication da classe FactoryDistribution que por sua vez implementa a interface IfactoryDistribution e é responsável por  inicializar a aplicação.
+O projeto Factory é responsável por ler os arquivos de contexto do Spring. Sua implementação é bem simples e temos apenas o método main que invoca o método startApplication da classe **FactoryDistribution** que por sua vez implementa a interface IfactoryDistribution e é responsável por  inicializar a aplicação.
 
 
 ![Estrutura de Projetos e Pacotes do Server](https://github.com/leandrocgsi/erudio/blob/master/img/image3.png?raw=true)
