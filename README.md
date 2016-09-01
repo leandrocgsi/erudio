@@ -3,6 +3,8 @@ erudio
 
 Aplicação multicamada, com suporte a Mobile, Desktop e Web ainda em desenvolvimento. Envolvendo as tecnologias Hibernate, Spring, Maven, SWING, JSF, JSON, XML e Android.
 
+[![Build Status](https://travis-ci.org/leandrocgsi/erudio.svg?branch=master)](https://travis-ci.org/leandrocgsi/erudio)
+[![Build Status](https://circleci.com/gh/leandrocgsi/erudio.svg?&style=shield)](https://circleci.com/gh/leandrocgsi/erudio/)
 
 ![Application Architecture](https://github.com/leandrocgsi/erudio/blob/master/img/image1.png?raw=true)
 
