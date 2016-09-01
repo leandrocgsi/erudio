@@ -1,0 +1,10 @@
+language: java
+
+before_install:
+    - sudo apt-get update
+    - sudo apt-get install groovy
+
+jdk:
+  - oraclejdk8
+notifications:
+  email: false
