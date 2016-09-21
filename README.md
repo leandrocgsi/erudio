@@ -48,7 +48,7 @@ O projeto Service é o responsável por criar os serviços que contém as implem
  
 # O “Erudio-Erudio-database”
 
-![Estrutura de Projetos e Pacotes do Server](https://github.com/leandrocgsi/erudio/blob/master/img/image5.png?raw=true)
+![Estrutura de Projetos e Pacotes do Database](https://github.com/leandrocgsi/erudio/blob/master/img/image5.png?raw=true)
 
 O projeto Database é o mais complexo do Server, é nele que estão os DAO's, as entidades, o parser de bean para entidade e a factory dos serviços. Temos o serviço e o DAO genéricos que realizam operações básicas de acesso a dados,  sendo que estes são estendidos e seus métodos podem ser sobrescritos pelos DAO's e serviços específicos de cada entidade.
 A classe ParserDatabase é responsável por converter um bean em uma  entidade. Isto é necessário por que, por questões de segurança, apenas os beans são acessíveis pelos os clientes. Dessa forma os clientes desconhecem as entidades da aplicação e por consequência a estrutura da base de dados, provendo, assim, maior segurança para a aplicação. Para realizar o processo de parser utiliza-se a dependência Dozer. Por fim temos uma Factory responsável por criar os serviços.
