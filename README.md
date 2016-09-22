@@ -33,7 +33,7 @@ O Service por sua vez contém a implementação das ações disponibilizadas pel
 O projeto Factory é responsável por ler os arquivos de contexto do Spring. Sua implementação é bem simples e temos apenas o método main que invoca o método startApplication da classe **FactoryDistribution** que por sua vez implementa a interface IfactoryDistribution e é responsável por  inicializar a aplicação.
 
 
-![Estrutura de Projetos e Pacotes do Server](https://github.com/leandrocgsi/erudio/blob/master/img/image3.png?raw=true)
+![Estrutura de Projetos e Pacotes do Factory](https://github.com/leandrocgsi/erudio/blob/master/img/image3.png?raw=true)
 
 # O “Erudio-Erudio-business”
 
